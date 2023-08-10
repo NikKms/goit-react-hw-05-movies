@@ -7,10 +7,12 @@ const MovieList = ({ movies = [] }) => {
   const showMovies = movies?.length > 0;
 
   return (
-    <List>
-      {showMovies &&
-        movies.map(movie => <MovieItem key={movie.id} movie={movie} />)}
-    </List>
+    <>
+      <List>
+        {showMovies &&
+          movies.map(movie => <MovieItem key={movie.id} movie={movie} />)}
+      </List>
+    </>
   );
 };
 

@@ -1,30 +1,10 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useMovieData } from 'hooks/useMovieData';
 import { getMovieCast } from 'services/api';
-import { displayNoResultMessage } from 'ErrorHandling/errorHandling';
-
-import { StyledCast } from './styled';
+import { StyledCast } from './Cast.styled';
 
 const Cast = () => {
-  const [cast, setCast] = useState([]);
-  const [error, setError] = useState(null);
-
-  const { movieId } = useParams();
-
-  useEffect(() => {
-    if (!movieId) return;
-
-    const fetchCast = async () => {
-      try {
-        const data = await getMovieCast(movieId);
-        setCast(data.cast);
-      } catch (error) {
-        displayNoResultMessage(setError);
-      }
-    };
-
-    fetchCast();
-  }, [movieId]);
+  const { data, error } = useMovieData(getMovieCast);
+  const cast = data.cast || [];
 
   return (
     <section>

@@ -1,16 +1,18 @@
+import { Box } from '@chakra-ui/react';
 import { RotatingLines } from 'react-loader-spinner';
-import { LoaderWrapper } from './Loader.styled';
 
-const Loader = () => (
-  <LoaderWrapper>
-    <RotatingLines
-      strokeColor="grey"
-      strokeWidth="5"
-      animationDuration="0.75"
-      width="96"
-      visible={true}
-    />
-  </LoaderWrapper>
-);
+const Loader = () => {
+  return (
+    <Box display="flex" alignItems="center" justifyContent="center">
+      <RotatingLines
+        strokeColor="grey"
+        strokeWidth="5"
+        animationDuration="0.75"
+        width="96"
+        visible={true}
+      />
+    </Box>
+  );
+};
 
 export default Loader;

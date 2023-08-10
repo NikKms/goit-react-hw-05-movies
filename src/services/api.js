@@ -42,3 +42,25 @@ export const getMovieReviews = async id => {
 
   return res.data;
 };
+
+export const getUpcomingMovies = async () => {
+  const res = await axios.get(
+    `${BASE_URL}/movie/upcoming?api_key=${API_KEY}&language=en-US`
+  );
+
+  const upcomingMovies = res.data.results;
+
+  if (upcomingMovies.length > 0) {
+    const randomIndex = Math.floor(Math.random() * upcomingMovies.length);
+    const randomMovie = upcomingMovies[randomIndex];
+    return randomMovie;
+  }
+};
+
+export const getMovieVideos = async id => {
+  const res = await axios.get(
+    `${BASE_URL}/movie/${id}/videos?api_key=${API_KEY}&language=en-US`
+  );
+
+  return res.data.results;
+};

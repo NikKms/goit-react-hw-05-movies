@@ -1,27 +1,10 @@
-import { displayNoResultMessage } from 'ErrorHandling/errorHandling';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { getMovieReviews } from 'services/api';
-import { StyledReviews } from './styled';
+import { StyledReviews } from './Reviews.styled';
+import { useMovieData } from 'hooks/useMovieData';
 
 const Reviews = () => {
-  const [reviews, setReviews] = useState([]);
-  const [error, setError] = useState(null);
-
-  const { movieId } = useParams();
-
-  useEffect(() => {
-    const fetchReviews = async () => {
-      try {
-        const data = await getMovieReviews(movieId);
-        setReviews(data.results);
-      } catch (error) {
-        displayNoResultMessage(setError);
-      }
-    };
-
-    fetchReviews();
-  }, [movieId]);
+  const { data, error } = useMovieData(getMovieReviews);
+  const reviews = data.results || [];
 
   return (
     <section>
