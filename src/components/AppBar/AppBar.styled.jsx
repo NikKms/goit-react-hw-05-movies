@@ -8,38 +8,6 @@ export const HeaderStyled = styled.header`
   width: 100%;
   z-index: 1000;
   background-color: #1a202c;
-  padding: 8px 28px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    ul {
-      display: flex;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      gap: 28px;
-
-      li {
-        a {
-          font-size: 20px;
-          text-decoration: none;
-          color: #fff;
-          font-weight: bold;
-
-          &:hover {
-            color: orange;
-            text-decoration: underline;
-          }
-        }
-      }
-    }
-  }
 `;
 
 export const LogoLink = styled(Link)`

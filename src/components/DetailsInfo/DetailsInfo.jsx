@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types';
-import { Box, Heading, Image, AspectRatio } from '@chakra-ui/react';
-import { getMovieVideos } from 'services/api';
+import { Box, Heading } from '@chakra-ui/react';
 import { useMovieData } from 'hooks/useMovieData';
+import { MoviePoster } from 'components/MoviePoster';
+import { Trailer } from 'components/Trailer';
+import { GenresList } from 'components/GenresList';
+import { getMovieVideos } from 'services/api';
 
 export const DetailsInfo = ({
   posterPath,
@@ -9,7 +12,6 @@ export const DetailsInfo = ({
   voteAverage,
   overview,
   genres,
-  id,
 }) => {
   const { data: videos, error: trailerError } = useMovieData(getMovieVideos);
 
@@ -25,28 +27,11 @@ export const DetailsInfo = ({
         gap={{ base: '12px', md: '24px' }}
       >
         <Box flex="1" maxW="520px">
-          <Image
-            maxW={{ base: '100%' }}
-            src={
-              posterPath ||
-              'https://www.ormistonhospital.co.nz/wp-content/uploads/2016/05/No-Image.jpg'
-            }
-            alt={title}
-          />
+          <MoviePoster posterPath={posterPath} title={title} />
         </Box>
         <Box flex="1">
           {trailerKey && !trailerError && (
-            <Box mb="24px">
-              <AspectRatio ratio={16 / 9}>
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src={`https://www.youtube.com/embed/${trailerKey}`}
-                  title={`${title} Trailer`}
-                  allowFullScreen
-                ></iframe>
-              </AspectRatio>
-            </Box>
+            <Trailer trailerKey={trailerKey} title={title} />
           )}
 
           <Box>
@@ -58,23 +43,7 @@ export const DetailsInfo = ({
             <Heading as="h3" size="md" mt="24px">
               Genres
             </Heading>
-            <Box mt="12px">
-              {genres &&
-                genres.map((genre, index) => (
-                  <Box
-                    as="span"
-                    backgroundColor="gray.500"
-                    borderRadius="md"
-                    padding="4px 8px"
-                    key={index}
-                    mr="4px"
-                    mb="4px"
-                    display="inline-block"
-                  >
-                    {genre.name}
-                  </Box>
-                ))}
-            </Box>
+            <GenresList genres={genres} />
           </Box>
         </Box>
       </Box>
@@ -87,7 +56,6 @@ DetailsInfo.propTypes = {
   title: PropTypes.string,
   voteAverage: PropTypes.number,
   overview: PropTypes.string,
-  id: PropTypes.number,
   genres: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,

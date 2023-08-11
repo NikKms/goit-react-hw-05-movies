@@ -14,12 +14,22 @@ export const DetailsAdditional = ({ location }) => {
       <StyledHeading> Additional information</StyledHeading>
       <StyledList>
         <StyledListItem>
-          <Button as={Link} to="cast" state={{ from: location.state?.from }}>
+          <Button
+            as={Link}
+            to="cast"
+            boxShadow="md"
+            state={{ from: location.state?.from }}
+          >
             Cast
           </Button>
         </StyledListItem>
         <li>
-          <Button as={Link} to="reviews" state={{ from: location.state?.from }}>
+          <Button
+            as={Link}
+            to="reviews"
+            boxShadow="md"
+            state={{ from: location.state?.from }}
+          >
             Reviews
           </Button>
         </li>

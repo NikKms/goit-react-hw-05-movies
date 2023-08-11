@@ -13,7 +13,9 @@ const MovieItem = ({ movie }) => {
           <img
             src={
               movie.poster_path
-                ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` || (
+                    <p>Loading...</p>
+                  )
                 : 'https://www.ormistonhospital.co.nz/wp-content/uploads/2016/05/No-Image.jpg'
             }
             alt={movie.title}

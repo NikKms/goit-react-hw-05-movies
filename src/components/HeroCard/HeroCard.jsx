@@ -51,7 +51,7 @@ export const HeroCard = () => {
           left="0"
           right="0"
           bottom="0"
-          backgroundImage={`linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent), url(https://image.tmdb.org/t/p/w500/${randomMovie.backdrop_path})`}
+          backgroundImage={`linear-gradient(to bottom, rgba(0, 0, 0, 1), transparent), url(https://image.tmdb.org/t/p/w500/${randomMovie.backdrop_path})`}
           backgroundSize="cover"
           backgroundPosition="center"
         />
@@ -77,6 +77,7 @@ export const HeroCard = () => {
         colorScheme="orange"
         onClick={handleViewDetails}
         alignSelf="flex-end"
+        boxShadow="md"
       >
         View Details
       </Button>

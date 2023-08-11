@@ -1,6 +1,6 @@
 import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { MainStyled } from './Main.styled';
+import { Container } from '@chakra-ui/react';
 
 const LazyHome = lazy(() => import('../../pages/Home/Home'));
 const LazyMovies = lazy(() => import('../../pages/Movies/Movies'));
@@ -13,7 +13,7 @@ const LazyNotFoundPage = lazy(() =>
 
 export const Main = () => {
   return (
-    <MainStyled>
+    <Container mt="75px" px="28px" maxW="1240px">
       <Suspense>
         <Routes>
           <Route path="/" element={<LazyHome />} />
@@ -22,6 +22,6 @@ export const Main = () => {
           <Route path="*" element={<LazyNotFoundPage />} />
         </Routes>
       </Suspense>
-    </MainStyled>
+    </Container>
   );
 };

@@ -11,14 +11,16 @@ const Reviews = () => {
       <StyledReviews>
         {error && <p className="error">{error}</p>}
         {!error && reviews.length > 0 ? (
-          <div>
-            {reviews.map(({ id, author, content }) => (
-              <div className="review" key={id}>
-                <p className="author">{author}</p>
-                <p>{content}</p>
-              </div>
-            ))}
-          </div>
+          (
+            <div>
+              {reviews.map(({ id, author, content }) => (
+                <div className="review" key={id}>
+                  <p className="author">{author}</p>
+                  <p>{content}</p>
+                </div>
+              ))}
+            </div>
+          ) || <p>Loading...</p>
         ) : (
           <p>No reviews available.</p>
         )}
