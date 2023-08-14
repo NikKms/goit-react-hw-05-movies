@@ -8,6 +8,7 @@ export const HeaderStyled = styled.header`
   width: 100%;
   z-index: 1000;
   background-color: #1a202c;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
 `;
 
 export const LogoLink = styled(Link)`

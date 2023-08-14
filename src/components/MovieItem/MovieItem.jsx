@@ -6,6 +6,9 @@ import { Item } from './MovieItem.styled';
 const MovieItem = ({ movie }) => {
   const location = useLocation();
 
+  const releaseDate = movie.release_date || '';
+  const releaseYear = releaseDate.slice(0, 4);
+
   return (
     <Item>
       <NavLink to={`/movies/${movie.id}`} state={{ from: location }}>
@@ -21,7 +24,10 @@ const MovieItem = ({ movie }) => {
             alt={movie.title}
           />
         </div>
-        <h4>{movie.original_title || movie.name}</h4>
+        <>
+          <h4>{movie.original_title || movie.name}</h4>
+          <h4>{releaseYear}</h4>
+        </>
       </NavLink>
     </Item>
   );
@@ -35,6 +41,7 @@ MovieItem.propTypes = {
     title: PropTypes.string,
     original_title: PropTypes.string,
     name: PropTypes.string,
+    release_date: PropTypes.string,
   }).isRequired,
 };
 
